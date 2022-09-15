@@ -13,16 +13,20 @@ public class NewLoggingAspect {
             throws Throwable {
         System.out.println("aroundReturnBookingLoggingAdvice:" +
                 " в бибилотеку пытаются вернуть книгу");
-        long begin = System.currentTimeMillis();
-        Object targetMethodResult = proceedingJoinPoint.proceed();
-        targetMethodResult = "Преступление и наказание";
-        long end = System.currentTimeMillis();
+
+        Object targetMethodResult = null;
+        try {
+
+            targetMethodResult = proceedingJoinPoint.proceed();
+        } catch (Exception e) {
+            System.out.println("aroundReturnBookLoggingAdvice: было поймано" +
+                    "исключение " + e);
+            targetMethodResult = "Неизвестной название книги";
+        }
 
         System.out.println("aroundReturnBookingLoggingAdvice: " +
                 "в бибилотеку успешно вернули книгу");
 
-        System.out.println("aroundReturnBookingLoggingAdvice: метод returnBook " +
-                "выполнил работы за " + (end - begin) + " миллисекунд");
         return targetMethodResult;
 
     }
