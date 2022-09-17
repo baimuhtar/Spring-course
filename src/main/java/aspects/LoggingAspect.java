@@ -1,4 +1,4 @@
-package aop.aspects;
+package aspects;
 
 import aop.Book;
 import org.aspectj.lang.JoinPoint;
@@ -61,7 +61,7 @@ public class LoggingAspect {
 
 
 
-    @Before("aop.aspects.MyPointcuts.allAddMethods()")
+    @Before("aspects.MyPointcuts.allAddMethods()")
     public void beforeAddLoggingAdvice(JoinPoint joinPoint) {
 
         MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();

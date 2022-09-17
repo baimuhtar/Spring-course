@@ -1,4 +1,4 @@
-package aop.aspects;
+package aspects;
 
 import org.aspectj.lang.annotation.Pointcut;
 
